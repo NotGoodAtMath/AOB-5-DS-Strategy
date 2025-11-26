@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roulette Monte Carlo Simulator - Multi Strategy Comparison</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Roulette Monte Carlo Simulator</h1>
+            <p class="subtitle">Compare Four Even-Money + Double Street Strategies (French Roulette • La Partage)</p>
+        </header>
+
+        <div class="main-content">
+            <div class="control-panel">
+                <div class="input-group">
+                    <label for="spinCount">Spins Per Strategy:</label>
+                    <input type="number" id="spinCount" min="1" value="2100" step="1">
+                </div>
+                <div class="bankroll-info">
+                    <p>Initial Bankroll: <span class="amount">$7,207.00</span></p>
+                    <p>Unit Size: <span class="amount">$0.20</span></p>
+                </div>
+                <p class="strategy-note">Each run simulates all four strategies independently using the same progression system.</p>
+                <button id="runSimulation" class="btn-primary">Run All Strategies</button>
+                <button id="resetSimulation" class="btn-secondary" style="display: none;">Reset</button>
+            </div>
+
+            <div class="progress-section" id="progressSection" style="display: none;">
+                <div class="progress-bar-container">
+                    <div class="progress-bar" id="progressBar"></div>
+                </div>
+                <p class="progress-text" id="progressText">Running simulation...</p>
+            </div>
+
+            <div class="results-section" id="resultsSection" style="display: none;">
+                <h2>Strategy Results</h2>
+                <div id="aggregateSummary" class="aggregate-summary" style="display:none;">
+                    <div class="results-grid">
+                        <div class="result-card">
+                            <h3>Total Profit/Loss</h3>
+                            <p class="result-value" id="summaryTotalProfit">$0.00</p>
+                        </div>
+                        <div class="result-card">
+                            <h3>Average Profit/Loss</h3>
+                            <p class="result-value" id="summaryAverageProfit">$0.00</p>
+                        </div>
+                        <div class="result-card">
+                            <h3>Profitable Strategies</h3>
+                            <p class="result-value" id="summaryProfitable">0</p>
+                        </div>
+                        <div class="result-card">
+                            <h3>Stopped Strategies</h3>
+                            <p class="result-value" id="summaryStopped">0</p>
+                        </div>
+                    </div>
+                </div>
+                <div id="strategiesContainer" class="strategies-grid"></div>
+            </div>
+        </div>
+
+        <footer>
+            <p>Strategies: (1) Manque + 19-24 & 31-36 | (2) Manque + 19-24 & 25-30 | (3) Manque + 25-30 & 31-36 | (4) Passe + 1-6 & 13-18</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
